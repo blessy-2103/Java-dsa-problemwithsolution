@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class SetBitSortSimple {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+
+        while (T-- > 0) {
+            int N = sc.nextInt();
+            int[] arr = new int[N];
+            for (int i = 0; i < N; i++) arr[i] = sc.nextInt();
+
+          
+            Arrays.sort(arr, (a, b) -> {
+                int aParity = Integer.bitCount(a) % 2;
+                int bParity = Integer.bitCount(b) % 2;
+
+                if (aParity != bParity) {
+                    return aParity - bParity; 
+                } else {
+                    return a - b; 
+                }
+            });
+
+            
+            for (int num : arr) System.out.print(num + " ");
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
